@@ -9,10 +9,10 @@ import seaborn as sns
 
 if __name__ == '__main__':
     seed = 5
-    random.seed(seed)
+    simulate.seed_random(seed)
     num_samples = 1000
-    max_tries_options = np.arange(5, 50, 10)
-    num_box_options = np.arange(10, 100, 10)
+    max_tries_options = np.arange(5, 50, 1)
+    num_box_options = np.arange(10, 100, 1)
     vsample = np.vectorize(simulate.sample, otypes=[int])
 
     # dist_items = []
@@ -23,10 +23,13 @@ if __name__ == '__main__':
     #             dist_items.append([nboxes, ntries, sample])
 
     # df = pd.DataFrame(dist_items, columns=['nboxes', 'ntries', 'npeople'])
-
-    # g = sns.FacetGrid(df, col='nboxes', row='ntries')
+    # sns.set_style('darkgrid')
+    # g = sns.FacetGrid(df, col='nboxes', row='ntries', margin_titles=True)
     # g.map(plt.hist, 'npeople')
-    # plt.show()
+    # plt.subplots_adjust(top=0.93)
+    # g.fig.suptitle('number of people who find their box', fontsize=16)
+    # plt.savefig('facetgrid.png')
+    # # plt.show()
 
     params = np.meshgrid(num_box_options, max_tries_options)
     results = np.array([vsample(*params) for _ in range(num_samples)])
@@ -34,8 +37,8 @@ if __name__ == '__main__':
     results_bin = np.sum(results == num_box_options, axis=0) / num_samples
 
     print(results_bin)
-    ax = plt.axes()
     plt.set_cmap('Purples')
+    ax = plt.axes()
     contour = ax.contourf(*params, results_bin)
     ax.set_xlabel('num boxes')
     ax.set_ylabel('max tries allowed')
@@ -45,4 +48,4 @@ if __name__ == '__main__':
     f'{seed}-{num_samples}-{max_tries_options[0]},{max_tries_options[-1]}-{num_box_options[0]},{num_box_options[-1]}.png'
     )
     plt.savefig(filename)
-    plt.show()
+    # plt.show()
