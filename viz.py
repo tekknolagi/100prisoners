@@ -1,5 +1,5 @@
 import random
-import simulate
+import simulate_fast as simulate
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -10,7 +10,7 @@ import seaborn as sns
 if __name__ == '__main__':
     seed = 5
     simulate.seed_random(seed)
-    num_samples = 1000
+    num_samples = 100
     max_tries_options = np.arange(5, 50, 1)
     num_box_options = np.arange(10, 100, 1)
     vsample = np.vectorize(simulate.sample, otypes=[int])
