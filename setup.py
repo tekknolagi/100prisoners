@@ -10,7 +10,7 @@ simulate_fast_module = Extension(
 
 setuptools.setup(
     name="prisoners_problem",
-    version="0.0.4",
+    version="0.0.6",
     description="Simulate the 100 prisoners problem.",
     ext_modules=[simulate_fast_module],
     url="https://github.com/tekknolagi/100prisoners",
