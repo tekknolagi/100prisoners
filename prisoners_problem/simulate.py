@@ -1,7 +1,9 @@
 import random
 
+
 def seed_random(i):
     random.seed(i)
+
 
 def try_find_self(boxes, start, limit):
     next_box = boxes[start]
@@ -12,12 +14,17 @@ def try_find_self(boxes, start, limit):
     return next_box == start
 
 
-def sample(n=100, limit=50):
+def sample(n=100, limit=50, strategy=try_find_self):
     # boxes = random.sample(range(n), k=n)
     boxes = list(range(n))
     random.shuffle(boxes)
-    return sum(try_find_self(boxes, person, limit) for person in range(n))
+    return sum(strategy(boxes, person, limit) for person in range(n))
 
 
-if __name__ == '__main__':
-    print(sample(100, 50))
+def nsamples(n):
+    return sum([sample(100, 50) == 100 for _ in range(n)]) / n
+
+
+if __name__ == "__main__":
+    seed_random(5)
+    print(nsamples(1000))

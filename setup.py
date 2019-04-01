@@ -1,13 +1,17 @@
-from distutils.core import setup, Extension
+import setuptools
+from distutils.core import Extension
 
-simulate_fast_module = Extension('simulate_fast',
-                           sources = ['simulate_fast.cpp'])
+simulate_fast_module = Extension(
+        "simulate_fast", sources=["prisoners_problem/simulate_fast.cpp"]
+)
 
-setup(name = '100prisoners',
-      version = '1.0',
-      description = '',
-      ext_modules = [simulate_fast_module],
-
-      url='https://bernsteinbear.com',
-      author='Maxwell Bernstein',
-      author_email='python@bernsteinbear.com')
+setuptools.setup(
+    name="prisoners_problem",
+    version="0.0.1",
+    description="Simulate the 100 prisoners problem.",
+    ext_modules=[simulate_fast_module],
+    url="https://github.com/tekknolagi/100prisoners",
+    author="Maxwell Bernstein",
+    packages=setuptools.find_packages(),
+    author_email="python@bernsteinbear.com",
+)
