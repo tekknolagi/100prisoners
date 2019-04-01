@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-if __name__ == "__main__":
+def main():
     seed = 5
     simulate.seed_random(seed)
     num_samples = 100
@@ -26,4 +26,8 @@ if __name__ == "__main__":
     plt.colorbar(contour)
     filename = f"{seed}-{num_samples}-{max_tries_options[0]},{max_tries_options[-1]}-{num_box_options[0]},{num_box_options[-1]}.png"  # noqa: E501
     plt.savefig(filename)
-    # plt.show()
+    plt.show()
+
+
+if __name__ == '__main__':
+    main()

@@ -21,8 +21,8 @@ def sample(n=100, limit=50, strategy=try_find_self):
     return sum(strategy(boxes, person, limit) for person in range(n))
 
 
-def nsamples(n):
-    return sum([sample(100, 50) == 100 for _ in range(n)]) / n
+def nsamples(n, strategy=try_find_self):
+    return sum([sample(100, 50, strategy) == 100 for _ in range(n)]) / n
 
 
 if __name__ == "__main__":
