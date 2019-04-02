@@ -14,7 +14,7 @@ static long try_find_self(const std::vector<int> &boxes, long start,
   return next_box == start;
 }
 
-static PyObject *seed_random(PyObject *self, PyObject *args) {
+static PyObject *seed_random(PyObject * /* self */, PyObject *args) {
   PyObject *seed_obj;
   if (!PyArg_UnpackTuple(args, "seed", 1, 1, &seed_obj)) {
     return nullptr;
@@ -30,7 +30,7 @@ static PyObject *seed_random(PyObject *self, PyObject *args) {
   Py_RETURN_NONE;
 }
 
-static PyObject *sample(PyObject *self, PyObject *args) {
+static PyObject *sample(PyObject * /* self */, PyObject *args) {
   PyObject *nboxes_obj, *limit_obj;
   if (!PyArg_UnpackTuple(args, "args", 2, 2, &nboxes_obj, &limit_obj)) {
     return nullptr;
@@ -70,7 +70,11 @@ static PyMethodDef simulate_fast_methods[] = {
 static struct PyModuleDef simulate_fast_definition = {
     PyModuleDef_HEAD_INIT, "simulate_fast",
     "A Python module that prints 'hello world' from C code.", -1,
-    simulate_fast_methods};
+    simulate_fast_methods,
+    nullptr,
+    nullptr,
+    nullptr,
+    nullptr};
 
 PyMODINIT_FUNC PyInit_simulate_fast(void) {
   Py_Initialize();

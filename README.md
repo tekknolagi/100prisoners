@@ -1,5 +1,16 @@
-To build the C extension, run `python setup.py build`.
+Install using `pip3 install prisoners_problem`.
 
-Then run `python src/viz.py`.
+Run a couple samples with a given strategy:
 
-You'll need NumPy, Matplotlib.
+```
+>>> from prisoners_problem import simulate
+>>> simulate.nsamples(1000, strategy=simulate.try_find_self)
+0.3
+>>>
+```
+
+`help(simulate.nsamples)` should give information for how to put in your own
+strategy.
+
+You can run `python3 -m prisoners_problem.viz` to show the results of the
+visualization.
