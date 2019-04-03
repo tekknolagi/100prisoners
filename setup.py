@@ -1,22 +1,18 @@
 import setuptools
-import sysconfig
 from distutils.core import Extension
 
 with open("README.md", "r") as f:
     long_description = f.read()
 
-extra_compile_args = sysconfig.get_config_var('CFLAGS').split()
-extra_compile_args += ["-std=c++11", "-Wall", "-Wextra"]
-
 setuptools.setup(
     name="prisoners_problem",
-    version="0.0.7",
+    version="0.0.8",
     description="Simulate the 100 prisoners problem.",
     ext_modules=[
         Extension(
             "simulate_fast", sources=["prisoners_problem/simulate_fast.cpp"],
-            extra_compile_args=extra_compile_args,
-            language='c++11',
+            extra_compile_args=['-std=c++11', '-Wall', '-Wextra'],
+            language='c++',
             )
         ],
     url="https://github.com/tekknolagi/100prisoners",
