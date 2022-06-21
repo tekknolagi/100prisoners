@@ -20,7 +20,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     author_email="python@bernsteinbear.com",
     install_requires=[
-        'numpy==1.16.2',
+        'numpy==1.22.0',
         'matplotlib==3.0.3',
     ],
     long_description=long_description,
